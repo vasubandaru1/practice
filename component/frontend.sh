@@ -5,11 +5,15 @@ print() {
   echo -e "\n\e[31m============================ $1 ======================\e[0m"
 }
 LOG=/tmp/roboshop.log
-rm -rf $LOG
+rm -f $LOG
 
 print "Installing nginx"
 yum install nginx -y &>>$LOG
-
+if [ $? -eq 0 ]; then
+  echo -e "\e[1;32mSUCESS\e[0m"
+  else
+    echo -e "\e[1;31mFAILURE\e[0m"
+exit
 print "Enabling nginx"
 systemctl enable nginx &>>$LOG
 
