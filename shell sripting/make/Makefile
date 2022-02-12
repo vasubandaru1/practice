@@ -7,7 +7,7 @@
 #	@echo two
 
 help:
-	@grep "####" Makefile
+	@grep "####" Makefile | grep -v grep
 
 One: ####
 	@echo one
