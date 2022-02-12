@@ -7,7 +7,7 @@
 #	@echo two
 
 help:
-	@grep "####" Makefile | grep -v grep
+	@grep "####" Makefile | grep -v grep | sed -e "s/####//"
 
 One: #### target one
 	@echo one
