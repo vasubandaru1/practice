@@ -15,7 +15,7 @@ systemctl start nginx &>>$LOG
 stat $?
 
 print "Downloading zipfile"
-curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
+curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>$LOG
 stat $?
 
 cd /usr/share/nginx/html
