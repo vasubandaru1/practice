@@ -9,6 +9,8 @@ stat() {
     echo -e "\e[1;32mSUCESS\e[0m"
     else
       echo -e "\e[1;31mFAILURE\e[0m"
+      echo -e "\e[1;33m check the logs in $LOG\e[0m"
+      exit1
       fi
 
 }
