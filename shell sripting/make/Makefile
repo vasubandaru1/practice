@@ -9,8 +9,8 @@
 help:
 	@grep "####" Makefile | grep -v grep
 
-One: ####
+One: #### target one
 	@echo one
 
-Two: ####
+Two: #### target two
 	@echo two
