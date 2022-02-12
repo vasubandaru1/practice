@@ -13,6 +13,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[1;32mSUCESS\e[0m"
   else
     echo -e "\e[1;31mFAILURE\e[0m"
+    fi
 exit
 print "Enabling nginx"
 systemctl enable nginx &>>$LOG
