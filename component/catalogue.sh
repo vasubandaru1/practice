@@ -38,14 +38,14 @@ cd /home/roboshop/catalogue
 npm install --unsafe-perm &>>$LOG
 stat $?
 
-print "Update Listner in systemd.service"
-sed -i -e "s/127.0.0.1/0.0.0.0/g" /etc/systemd &>>$LOG
-stat $?
-
 print "Fix APP permision"
 chown -R roboshop:roboshop /home/roboshop
 stat $?
 exit
+
+print "Update Listner in systemd.service"
+sed -i -e "s/127.0.0.1/0.0.0.0/g" /etc/systemd &>>$LOG
+stat $?
 
 NOTE: We need to update the IP address of MONGODB Server in systemd.service file
 Now, lets set up the service with systemctl.
