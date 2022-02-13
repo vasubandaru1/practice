@@ -20,7 +20,7 @@ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/cat
 stat $?
 
 print "Unzip a file"
-unzip -o -d /home/roboshop/. /tmp/catalogue.zip/*
+unzip -o -d /home/roboshop /tmp/catalogue.zip
 stat $?
 exit
 
