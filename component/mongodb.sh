@@ -2,24 +2,36 @@
 
 source common.sh
 
-# curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo
-Install Mongo & Start Service.
-# yum install -y mongodb-org
-# systemctl enable mongod
-# systemctl start mongod
-Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file
-Config file: /etc/mongod.conf
+print "Download mongodb.repo"
+curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>>$LOG
+stat $?
 
-then restart the service
+print "Install Mongodb"
+yum install -y mongodb-org &>>$LOG
+stat $?
 
-# systemctl restart mongod
-Every Database needs the schema to be loaded for the application to work.
-Download the schema and load it.
+print "Update Listners in conf"
+sed -i -e "s/127.0.0.1/0.0.0.0/g" /etc/mongod.conf &>>$LOG
+stat $?
 
-# curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
+print "Enable the mongod"
+systemctl enable mongod &>>$LOG
+stat $?
 
-# cd /tmp
-# unzip mongodb.zip
-# cd mongodb-main
-# mongo < catalogue.js
-# mongo < users.js
+print "Restart the mongod"
+systemctl restart mongod &>>$LOG
+stat $?
+
+print "Download the schema "
+curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>$LOG
+stat $?
+
+print "Extract the file"
+unzip -o -d /tmp /tmp/mongodb.zip &>>$LOG
+stat $?
+
+print "Load schema"
+cd /tmp/mongodb-main
+mongo < catalogue.js &>>$LOG
+mongo < users.js &>>$LOG
+stat $?
