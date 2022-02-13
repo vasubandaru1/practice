@@ -23,8 +23,6 @@ print "Remove old content"
 rm -rf /home/roboshop/catalogue
 stat $?
 
-exit
-
 print "Unzip a file"
 unzip -o -d /home/roboshop /tmp/catalogue.zip
 stat $?
