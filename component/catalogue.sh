@@ -16,7 +16,7 @@ fi
 stat $?
 
 print "Download catalogue"
-curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"
+curl -s -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"
 stat $?
 
 print "Unzip a file"
