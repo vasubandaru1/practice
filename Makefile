@@ -2,8 +2,9 @@ help:
 	@grep "####" Makefile | grep -v grep | sed -e "s/####//"
 
 git-pull:
+	@echo -e "\e[32m......PULLING CODE.......\e[0m"
 	@git pull &>/dev/null
-	echo -e "\e[32m......PULLING CODE.......\e[0m"
+
 
 cart: git-pull #### setup cart component
 	@bash component/cart.sh
