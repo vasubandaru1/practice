@@ -5,12 +5,20 @@ source component/common.sh
 print "Install nodejs"
  yum install nodejs make gcc-c++ -y &>>$LOG
  stat $?
- exit
 
-# useradd roboshop
-$ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"
-$ cd /home/roboshop
-$ unzip /tmp/catalogue.zip
+print "Add user"
+useradd roboshop
+stat $?
+
+print "Download catalogue"
+curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"
+stat $?
+
+print "Unzip a file"
+unzip -o -d /home/roboshop /tmp/catalogue.zip
+stat $?
+exit
+
 $ mv catalogue-main catalogue
 $ cd /home/roboshop/catalogue
 $ npm install
