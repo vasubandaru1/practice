@@ -16,7 +16,7 @@ fi
 stat $?
 
 print "Download catalogue"
-curl  -o /tmp  "https://github.com/roboshop-devops-project/catalogue/main.zip"
+curl -L -o /tmp/. "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"
 stat $?
 exit
 print "Remove old content"
