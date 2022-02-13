@@ -24,7 +24,7 @@ rm -rf /home/roboshop
 stat $?
 
 print "Unzip a file"
-unzip -o -d /home/roboshop/. /tmp/catalogue.zip
+unzip -o -d /home/roboshop /tmp/catalogue.zip
 stat $?
 exit
 print "mv"
