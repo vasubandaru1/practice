@@ -3,7 +3,7 @@
 source component/common.sh
 
 print "Install nodejs"
- yum install nodejs make gcc-c++ -y &>>$LOG
+ yum install gcc-c++ make nodejs   -y &>>$LOG
  stat $?
 
 print "Add roboshop user"
