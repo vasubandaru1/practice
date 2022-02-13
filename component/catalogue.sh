@@ -26,7 +26,7 @@ stat $?
 print "Unzip a file"
 unzip -o -d /home/roboshop/. /tmp/catalogue.zip
 stat $?
-
+exit
 print "mv"
 mv
 
