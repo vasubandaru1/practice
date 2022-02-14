@@ -40,7 +40,7 @@ npm install --unsafe-perm &>>$LOG
 stat $?
 
 print "Fix APP permision"
-chown -R roboshop:roboshop /home/roboshop/
+chown -R roboshop:roboshop /home/roboshop/catalogue
 stat $?
 
 exit
