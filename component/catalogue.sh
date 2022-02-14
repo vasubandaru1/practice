@@ -20,9 +20,9 @@ print "Download catalogue"
 curl -s -L -o /tmp/catalogue.zip  "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>$LOG
 stat $?
 
-#print "Remove old content"
-#rm -rf /home/roboshop &>>$LOG
-#stat $?
+print "Remove old content"
+rm -rf /home/roboshop/catalogue
+stat $?
 
 print "Unzip a file"
 unzip -o -d /home/roboshop /tmp/catalogue.zip &>>$LOG
