@@ -1,5 +1,5 @@
 #!/bin/bash
-cat $0 | grep ^print
+cat $0 | grep ^print | awk -F "(print $2)"
 
 exit
 source component/common.sh
