@@ -1,5 +1,7 @@
 #!/bin/bash
+cat $0 ^print
 
+exit
 source component/common.sh
 
 print "Install nodejs"
