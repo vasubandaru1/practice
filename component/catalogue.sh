@@ -3,9 +3,9 @@
 source component/common.sh
 
 print "Install nodejs"
-yum install gcc-c++ make nodejs   -y &>>$LOG
+yum install gcc-c++ make  -y &>>$LOG
 curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash - &>>$LOG
-sleep 20
+yum install  nodejs -y &>>$LOG
  stat $?
 
 print "Add roboshop user"
@@ -22,7 +22,7 @@ curl -s -L -o /tmp/catalogue.zip  "https://github.com/roboshop-devops-project/ca
 stat $?
 
 print "Remove old content"
-rm -rf /home/roboshop/catalogue
+rm -rf /home/practice/catalogue
 stat $?
 
 print "Unzip a file"
