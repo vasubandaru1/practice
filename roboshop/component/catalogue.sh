@@ -43,9 +43,8 @@ print "Fix APP permision"
 chown -R roboshop:roboshop /home/roboshop/catalogue
 stat $?
 
-exit
 print "Update Listner of mongodb"
-sed -i -e "s/MONGO_DNSNAME/mongodb.roboshop.internal/g" /home/roboshop/catalogue/systemd.service &>>$LOG
+sed -i -e "s/MONGO_DNSNAME/mongodb.roboshop.internal/" /home/roboshop/catalogue/systemd.service &>>$LOG
 stat $?
 
 print "copy systemd file"
