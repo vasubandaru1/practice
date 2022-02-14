@@ -3,18 +3,18 @@
 source component/common.sh
 
 print "Install nodejs"
-yum install gcc-c++ make  -y &>>$LOG
+yum install gcc-c++ make -y &>>$LOG
 curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash - &>>$LOG
 sleep 20
-yum install  nodejs -y &>>$LOG
+yum install nodejs -y &>>$LOG
  stat $?
 
 print "Add roboshop user"
 id roboshop &>>$LOG
 if [ $? -eq 0 ]; then
   echo "user already exists"
-  else
-useradd roboshop
+else
+   useradd roboshop
 fi
 stat $?
 
@@ -22,9 +22,9 @@ print "Download catalogue"
 curl -s -L -o /tmp/catalogue.zip  "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>$LOG
 stat $?
 
-print "Remove old content"
-rm -rf /home/roboshop/catalogue
-stat $?
+#print "Remove old content"
+#rm -rf /home/roboshop/catalogue
+#stat $?
 
 print "Unzip a file"
 unzip -o -d /home/roboshop /tmp/catalogue.zip &>>$LOG
@@ -40,10 +40,10 @@ npm install --unsafe-perm &>>$LOG
 stat $?
 
 print "Fix APP permision"
-chown -R roboshop:roboshop /home/roboshop
+chown -R roboshop:roboshop /home/roboshop/
 stat $?
 
-
+exit
 print "Update Listner of mongodb"
 sed -i -e "s/127.0.0.1/0.0.0.0/g" /etc/systemd &>>$LOG
 stat $?
