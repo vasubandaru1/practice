@@ -1,5 +1,5 @@
 #!/bin/bash
-cat $0 ^print
+cat $0 | grep ^print
 
 exit
 source component/common.sh
