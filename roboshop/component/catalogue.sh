@@ -25,14 +25,13 @@ stat $?
 print "Remove old content"
 rm -rf /home/roboshop/catalogue
 stat $?
-exit
 
 print "Unzip a file"
 unzip -o -d /home/roboshop /tmp/catalogue.zip &>>$LOG
 stat $?
 
 print "Copy the content"
-mv /home/roboshop/catalogue-main /home/roboshop/catalogue &>>$LOG
+mv /home/roboshop/catalogue-main /home/roboshop/catalogue
 stat $?
 
 print "Install nodejs dependencies"
@@ -46,13 +45,13 @@ stat $?
 
 exit
 print "Update Listner of mongodb"
-sed -i -e "s/127.0.0.1/0.0.0.0/g" /etc/systemd &>>$LOG
+sed -i -e "s/MONGO_DNSNAME/mongodb.roboshop.internal/g" /home/roboshop/catalogue/systemd.service &>>$LOG
 stat $?
 
-NOTE: We need to update the IP address of MONGODB Server in systemd.service file
-Now, lets set up the service with systemctl.
+print "copy systemd file"
+mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+stat $?
 
-# mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
-# systemctl daemon-reload
-# systemctl start catalogue
-# systemctl enable catalogue
+print "Start Catalogue services"
+systemctl daemon-reload && systemctl start catalogue && systemctl enable catalogue &>>$LOG
+stat $?
