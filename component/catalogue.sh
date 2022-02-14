@@ -42,7 +42,7 @@ chown -R roboshop:roboshop /home/roboshop
 stat $?
 exit
 
-print "Update Listner in systemd.service"
+print "Update Listner of mongodb"
 sed -i -e "s/127.0.0.1/0.0.0.0/g" /etc/systemd &>>$LOG
 stat $?
 
