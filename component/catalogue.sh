@@ -22,7 +22,7 @@ curl -s -L -o /tmp/catalogue.zip  "https://github.com/roboshop-devops-project/ca
 stat $?
 
 print "Remove old content"
-rm -rf /home/practice/catalogue
+rm -rf /home/roboshop/catalogue
 stat $?
 
 print "Unzip a file"
@@ -41,7 +41,7 @@ stat $?
 print "Fix APP permision"
 chown -R roboshop:roboshop /home/roboshop
 stat $?
-exit
+
 
 print "Update Listner of mongodb"
 sed -i -e "s/127.0.0.1/0.0.0.0/g" /etc/systemd &>>$LOG
