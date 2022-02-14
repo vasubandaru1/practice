@@ -3,7 +3,7 @@
 
 
 source component/common.sh
-cat $0 | grep ^print | awk -F "'" "{print $2}"
+cat $0 | grep ^print | awk -F "'" '{print $2}'
 
 exit
 print "Install nodejs"
