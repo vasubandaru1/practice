@@ -59,12 +59,10 @@ sleep 5
 
 print "Checking connected status of mongodb"
 STAT=$(curl -s localhost:8080/health | jq .mongo)
-echo status = $STAT
 if [ "$STAT" == "true" ]; then
   stat 0
   else
     stat 1
  fi
-stat $?
 
 
