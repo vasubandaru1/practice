@@ -1,9 +1,11 @@
 #!/bin/bash
-cat $0 | grep ^print | awk -f "'" "{print $2}"
+
+
+
+source component/common.sh
+cat $0 | grep ^print | awk -F '"' "{print $2}"
 
 exit
-source component/common.sh
-
 print "Install nodejs"
 yum install gcc-c++ make -y &>>$LOG
 curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash - &>>$LOG
