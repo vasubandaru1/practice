@@ -10,7 +10,7 @@ git-pull:
 #	@sudo bash component/cart.sh
 
 catalogue: git-pull #### setup catalogue component
-	@sudo bash catalogue.sh
+	@sudo bash component/catalogue.sh
 #
 #frontend: git-pull #### setup frontend component
 #	@sudo bash component/frontend.sh
