@@ -5,6 +5,7 @@ source component/common.sh
 print "Install nodejs"
 yum install gcc-c++ make  -y &>>$LOG
 curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash - &>>$LOG
+sleep 20
 yum install  nodejs -y &>>$LOG
  stat $?
 
