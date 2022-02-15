@@ -3,13 +3,14 @@
 source component/common.sh
 
 print "Install Redis repos"
+rpm -qa | grep wget || yum -y install wget &>>$LOG
 
-rpm -qa | grep wget || yum -y install wget
  echo $?
+
 if [ $? == 0 ]; then
   echo "repos already exists"
 
- else
+else
    yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y &>>$LOG
 fi
 stat $?
