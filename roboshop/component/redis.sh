@@ -3,7 +3,7 @@
 source component/common.sh
 
 yum remove epel-release -y
-yum update
+
 exit
 print "Install Redis repos"
 
