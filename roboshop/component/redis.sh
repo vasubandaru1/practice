@@ -5,7 +5,7 @@ source component/common.sh
 print "Install Redis repos"
 yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y &>>$LOG
 stat $?
-
+exit
 print "Enable redis repos"
 yum-config-manager --enable remi &>>$LOG
 stat $?
