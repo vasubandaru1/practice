@@ -19,7 +19,7 @@ systemctl enable mongod &>>$LOG
 stat $?
 
 print "Restart the mongod"
-systemctl start mongod &>>$LOG
+systemctl restart mongod &>>$LOG
 stat $?
 
 print "Download the schema "
