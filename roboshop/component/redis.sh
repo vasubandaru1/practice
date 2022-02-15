@@ -3,7 +3,7 @@
 source component/common.sh
 
 print "Install Redis repos"
-rpm -qa | grep wget || yum -y install wget | echo $? &>>$LOG
+rpm -qa | grep wget | yum -y install wget | echo $? &>>$LOG
 
 
 
