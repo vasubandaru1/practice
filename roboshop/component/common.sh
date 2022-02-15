@@ -65,7 +65,7 @@ sed -i -e "s/MONGO_DNSNAME/mongodb.roboshop.internal/" -e "s/REDIS_ENDPOINT/redi
 stat $?
 
 print "copy systemd file"
-cp /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
+mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
 stat $?
 
 print "Start ${COMPONENT_NAME} services"

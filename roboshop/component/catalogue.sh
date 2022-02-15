@@ -9,7 +9,6 @@ COMPONENT=catalogue
 
 NODEJS
 
-sleep 5
 
 print "Checking connected status of mongodb"
 STAT=$(curl -s localhost:8080/health | jq .mongo)
