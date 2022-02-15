@@ -26,7 +26,7 @@ sleep 20
 yum install nodejs -y &>>$LOG
  stat $?
 
-print "Add roboshop ${COMPONENT_NAME}"
+print "Add roboshop user"
 id roboshop &>>$LOG
 if [ $? -eq 0 ]; then
   echo "user already exists"
@@ -48,7 +48,7 @@ unzip -o -d /home/roboshop /tmp/${COMPONENT}.zip &>>$LOG
 stat $?
 
 print "Copy the content"
-mv /home/roboshop/$COMPONENT-main /home/roboshop/${COMPONENT}
+mv /home/roboshop/${COMPONENT}-main /home/roboshop/${COMPONENT}
 stat $?
 
 print "Install nodejs dependencies"
@@ -69,7 +69,7 @@ mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.
 stat $?
 
 print "Start ${COMPONENT_NAME} services"
-systemctl daemon-reload &>>$LOG && systemctl enable ${COMPONENT} &>>$LOG  && systemctl restart ${COMPONENT} &>>$LOG
+systemctl daemon-reload &>>$LOG && systemctl enable ${COMPONENT} &>>$LOG && systemctl restart ${COMPONENT} &>>$LOG
 stat $?
 
 
