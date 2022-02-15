@@ -35,7 +35,7 @@ else
 fi
 stat $?
 
-print "Download ${COMPONENT_NAME} "
+print "Download ${COMPONENT_NAME}"
 curl -s -L -o /tmp/${COMPONENT}.zip  "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>$LOG
 stat $?
 
@@ -69,7 +69,7 @@ mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.
 stat $?
 
 print "Start ${COMPONENT_NAME} services"
-systemctl daemon-reload &>>$LOG && systemctl enable ${COMPONENT} &>>$LOG && systemctl restart ${COMPONENT} &>>$LOG
+systemctl daemon-reload &>>$LOG && systemctl enable ${COMPONENT} &>>$LOG && systemctl start ${COMPONENT} &>>$LOG
 stat $?
 
 
