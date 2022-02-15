@@ -2,7 +2,11 @@
 
 source component/common.sh
 
+yum remove epel-release -y
+yum update
+exit
 print "Install Redis repos"
+
 yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y &>>$LOG
 stat $?
 exit
