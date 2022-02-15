@@ -11,7 +11,7 @@ yum install -y mongodb-org &>>$LOG
 stat $?
 
 print "Update Listners in conf"
-sed -i -e "s/127.0.0.1/0.0.0.0/g" /etc/mongod.conf &>>$LOG
+sed -i -e "s/127.0.0.1/0.0.0.0/" /etc/mongod.conf &>>$LOG
 stat $?
 
 print "Enable the mongod"
