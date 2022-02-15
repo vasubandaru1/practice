@@ -16,3 +16,61 @@ stat() {
 }
 LOG=/tmp/roboshop.log
 rm -f $LOG
+
+NODEJS() {
+
+  print "Install nodejs"
+yum install gcc-c++ make -y &>>$LOG
+curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash - &>>$LOG
+sleep 20
+yum install nodejs -y &>>$LOG
+ stat $?
+
+print "Add roboshop ${COMPONENT_NAME}"
+id roboshop &>>$LOG
+if [ $? -eq 0 ]; then
+  echo "user already exists"
+else
+   useradd roboshop
+fi
+stat $?
+
+print "Download ${COMPONENT_NAME} "
+curl -s -L -o /tmp/${COMPONENT}.zip  "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>$LOG
+stat $?
+
+print "Remove old content"
+rm -rf /home/roboshop/${COMPONENT}
+stat $?
+
+print "Unzip a file"
+unzip -o -d /home/roboshop /tmp/${COMPONENT}.zip &>>$LOG
+stat $?
+
+print "Copy the content"
+mv /home/roboshop/$COMPONENT-main /home/roboshop/${COMPONENT}
+stat $?
+
+print "Install nodejs dependencies"
+cd /home/roboshop/${COMPONENT}
+npm install --unsafe-perm &>>$LOG
+stat $?
+
+print "Fix APP permision"
+chown -R roboshop:roboshop /home/roboshop/${COMPONENT}
+stat $?
+
+print "Update Listner of ${COMPONENT_NAME}"
+sed -i -e "s/MONGO_DNSNAME/mongodb.roboshop.internal/" -e "s/REDIS_ENDPOINT/redis.roboshop.internal/" -e "s/MONGO_ENDPOINT/mongodb.roboshop.internal/" /home/roboshop/${COMPONENT}/systemd.service &>>$LOG
+stat $?
+
+print "copy systemd file"
+mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
+stat $?
+
+print "Start ${COMPONENT_NAME} services"
+systemctl daemon-reload && systemctl enable ${COMPONENT} && systemctl restart ${COMPONENT} &>>$LOG
+stat $?
+
+
+}
