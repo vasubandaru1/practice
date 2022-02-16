@@ -88,6 +88,7 @@ MONGO_CONNECTION() {
 }
 
 REDIS() {
+
 print "Checking connected status of redis"
  STAT=$(curl -s localhost:8080/health | jq .redis)
   if [ "$STAT" == "true" ]; then
