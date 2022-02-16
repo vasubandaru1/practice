@@ -32,8 +32,7 @@ if [ $? -ne 0 ]; then
   fi
 
 DOWNLOAD '/tmp'
-exit
-Load the schema for Services.
 
-# cd mysql-main
-# mysql -u root -pRoboShop@1 <shipping.sql
+print "Load Schema"
+cd /tmp/mysql-main
+mysql -u root -pRoboShop@1 <shipping.sql &>>$LOG
