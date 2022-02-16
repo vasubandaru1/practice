@@ -4,11 +4,11 @@
 
 source component/common.sh
 
-COMPONENT_NAME=Cataloge
-COMPONENT=catalogue
+COMPONENT_NAME=Cart
+COMPONENT=cart
 
 NODEJS
 
  sleep 20
-
+MONGO_CONNECTION
 REDIS_CONNECTION
