@@ -71,7 +71,7 @@ MAVEN() {
   stat $?
 
 ROBOSHOP_USER
-DOWNLOAD '/home/roboshop'
+DOWNLOAD "/home/roboshop"
 
 print "Make Mave package"
 cd /home/roboshop/${Component}
