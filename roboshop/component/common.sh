@@ -61,7 +61,7 @@ chown -R roboshop:roboshop /home/roboshop/${COMPONENT}
 stat $?
 
 print "Update Listner of ${COMPONENT_NAME}"
-sed -i -e "s/MONGO_DNSNAME/mongodb.roboshop.internal/" -e "s/REDIS_ENDPOINT/redis.roboshop.internal/" -e "s/MONGO_ENDPOINT/mongodb.roboshop.internal/" /home/roboshop/${COMPONENT}/systemd.service &>>$LOG
+sed -i -e "s/MONGO_DNSNAME/mongodb.roboshop.internal/" -e "s/REDIS_ENDPOINT/redis.roboshop.internal/" -e "s/MONGO_ENDPOINT/mongodb.roboshop.internal/"  -e "s/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/" /home/roboshop/${COMPONENT}/systemd.service &>>$LOG
 stat $?
 
 print "copy systemd file"
@@ -73,4 +73,27 @@ systemctl daemon-reload &>>$LOG && systemctl enable ${COMPONENT} &>>$LOG && syst
 stat $?
 
 
+}
+
+MONGO_CONNECTION() {
+
+  print "Checking connected status of mongodb"
+  STAT=$(curl -s localhost:8080/health | jq .mongo)
+  if [ "$STAT" == "true" ]; then
+    stat 0
+    else
+      stat 1
+   fi
+
+}
+
+REDIS_CONNECTION() {
+
+  print "Checking connected status of mongodb"
+  STAT=$(curl -s localhost:8080/health | jq .redis)
+  if [ "$STAT" == "true" ]; then
+    stat 0
+    else
+      stat 1
+   fi
 }
