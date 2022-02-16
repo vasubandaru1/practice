@@ -17,6 +17,17 @@ stat() {
 LOG=/tmp/roboshop.log
 rm -f $LOG
 
+DOWNLOAD() {
+  print "Download ${COMPONENT_NAME}"
+  curl -s -L -o /tmp/${COMPONENT}.zip  "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>$LOG
+  stat $?
+
+  print "Unzip a file"
+  unzip -o -d $1 /tmp/${COMPONENT}.zip &>>$LOG
+  stat $?
+
+}
+
 NODEJS() {
 
   print "Install nodejs"
@@ -35,17 +46,11 @@ else
 fi
 stat $?
 
-print "Download ${COMPONENT_NAME}"
-curl -s -L -o /tmp/${COMPONENT}.zip  "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>$LOG
-stat $?
-
 print "Remove old content"
 rm -rf /home/roboshop/${COMPONENT}
 stat $?
 
-print "Unzip a file"
-unzip -o -d /home/roboshop /tmp/${COMPONENT}.zip &>>$LOG
-stat $?
+DOWNLOAD '/home/roboshop'
 
 print "Copy the content"
 mv /home/roboshop/${COMPONENT}-main /home/roboshop/${COMPONENT}
@@ -71,7 +76,6 @@ stat $?
 print "Start ${COMPONENT_NAME} services"
 systemctl daemon-reload &>>$LOG && systemctl enable ${COMPONENT} &>>$LOG && systemctl restart ${COMPONENT} &>>$LOG
 stat $?
-
 
 }
 
