@@ -23,11 +23,11 @@ stat $?
 DEFAULT_PASSWORD=$( grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
 NEW_PASSWORD=roboshop123
 
-echo 'show databases;' | mysql -uroot -p"$(NEW_PASSWORD)" &>>$LOG
+echo 'show databases;' | mysql -uroot -p"${NEW_PASSWORD}" &>>$LOG
 if [ $? -ne 0 ]; then
   print "changing default password"
   echo -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${NEW_PASSWORD}';\nuninstall plugin validate_password;" >/tmp/pass.sql
-  mysql -uroot -p"$(NEW_PASSWORD)" </tmp/pass.sql &>>$LOG
+  mysql -uroot -p"${NEW_PASSWORD}" </tmp/pass.sql &>>$LOG
 
   fi
 
