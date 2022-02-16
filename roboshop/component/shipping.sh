@@ -4,7 +4,7 @@
 
 source component/common.sh
 
-COMPONENT_NAME=Maven
-COMPONENT=maven
+COMPONENT_NAME=Shipping
+COMPONENT=Shipping
 
 MAVEN
