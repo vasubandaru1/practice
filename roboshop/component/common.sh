@@ -87,7 +87,7 @@ MONGO_CONNECTION() {
 
 }
 
-REDIS_CONNECTION() {
+REDIS() {
 
   print "connection status of redis"
   STAT=$(curl -s localhost:8080/health | jq .redis)
