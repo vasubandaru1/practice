@@ -87,10 +87,9 @@ MONGO_CONNECTION() {
 
 }
 
-REDIS_CONNECTION() {
-
-  print "Checking connected status of mongodb"
-  STAT=$(curl -s localhost:8080/health | jq .redis)
+REDIS() {
+print "Checking connected status of redis"
+ STAT=$(curl -s localhost:8080/health | jq .redis)
   if [ "$STAT" == "true" ]; then
     stat 0
     else
