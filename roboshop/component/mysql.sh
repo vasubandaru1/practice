@@ -20,9 +20,9 @@ print "Start ${COMPONENT_NAME}"
 systemctl enable mysqld &>>$LOG && systemctl start mysqld &>>$LOG
 stat $?
 
-DEFAULT_PASSWORD=$( grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
+DEFAULT_PASSWORD=$(grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
 NEW_PASSWORD=roboshop@1
-
+exit
 echo 'show databases;' | mysql -uroot -p"${NEW_PASSWORD}" &>>$LOG
 if [ $? -ne 0 ]; then
   print "changing default password"
