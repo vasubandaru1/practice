@@ -37,6 +37,7 @@ stat $?
 print "Fix APP permision"
   chown -R roboshop:roboshop /home/roboshop/${COMPONENT}
   stat $?
+exit
 
   print "Update Listner of ${COMPONENT_NAME}"
   sed -i -e "s/CARTENDPOINT/cart.roboshop.internal/" -e "s/DBHOST/mysql.roboshop.internal/" /home/roboshop/${COMPONENT}/systemd.service &>>$LOG
