@@ -108,6 +108,29 @@ stat $?
 SYSTEMD
 
 }
+PYTHON() {
+  print "Install Python 3"
+  yum install python36 gcc python3-devel -y &>>$LOG
+  stat $?
+
+ ROBOSHOP_USER
+ DOWNLOAD '/home/roboshop'
+
+ print "Install the dependencies"
+  cd /home/roboshop/payment
+  pip3 install -r requirements.txt &>>$LOG
+  stat $?
+
+USER_ID=$(id -u roboshop)
+GROUP_ID=$(id -g roboshop)
+
+print "Update ${COMPONENT_NAME} service"
+sed -i -e "/uid/ c uid = $USER_ID" -e "/gid/ c gid = $GROUP_ID" /home/roboshop/${COMPONENT}/${COMPONENT}.ini &>>$LOG
+stat $?
+
+SYSTEMD
+
+}
 
 MONGO_CONNECTION() {
 
