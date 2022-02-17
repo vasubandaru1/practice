@@ -21,14 +21,14 @@ print "Download ${COMPONENT_NAME}"
   unzip -o -d /home/roboshop /tmp/${COMPONENT}.zip &>>$LOG
   stat $?
 
-  if [ "$1" == "/home/roboshop" ]; then
-    print "Remove old content"
-    rm -rf /home/roboshop/${COMPONENT}
-    stat $?
-    print "Copy the content"
-mv /home/roboshop/${COMPONENT}-main /home/roboshop/${COMPONENT}
-stat $?
-fi
+#  if [ "$1" == "/home/roboshop" ]; then
+#    print "Remove old content"
+#    rm -rf /home/roboshop/${COMPONENT}
+#    stat $?
+#    print "Copy the content"
+#mv /home/roboshop/${COMPONENT}-main /home/roboshop/${COMPONENT}
+#stat $?
+#fi
 
 print "Make Mave package"
 cd /home/roboshop/${Component}
