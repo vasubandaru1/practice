@@ -26,7 +26,7 @@ print "Download ${COMPONENT_NAME}"
  rm -rf /home/roboshop/${COMPONENT}
 stat $?
 print "Copy the content"
-/home/roboshop/${COMPONENT}-main /home/roboshop/${COMPONENT}
+ cd /home/roboshop/${COMPONENT}-main /home/roboshop/${COMPONENT}
 stat $?
 #fi
 
