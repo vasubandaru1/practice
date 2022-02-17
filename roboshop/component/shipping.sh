@@ -8,17 +8,17 @@ COMPONENT_NAME=Shipping
 COMPONENT=shipping
 
  print "Install Maven"
-  yum install maven -y &>>$LOG
+  yum install maven -y
   stat $?
 
 ROBOSHOP_USER
 
 print "Download ${COMPONENT_NAME}"
-  curl -s -L -o /tmp/${COMPONENT}.zip  "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>$LOG
+  curl -s -L -o /tmp/${COMPONENT}.zip  "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip"
   stat $?
 
   print "Unzip a file"
-  unzip -o -d /home/roboshop /tmp/${COMPONENT}.zip &>>$LOG
+  unzip -o -d /home/roboshop /tmp/${COMPONENT}.zip
   stat $?
 
 #if [ "$1" == "/home/roboshop" ]; then
@@ -32,7 +32,10 @@ stat $?
 
 print "Make Mave package"
 cd /home/roboshop/${Component}
-mvn clean package &>>$LOG && mv target/shipping-1.0.jar shipping.jar &>>$LOG
+mvn clean package &>>$LOG
+exit
+
+ mv target/shipping-1.0.jar shipping.jar &>>$LOG
 stat $?
 print "Fix APP permision"
   chown -R roboshop:roboshop /home/roboshop/${COMPONENT}
