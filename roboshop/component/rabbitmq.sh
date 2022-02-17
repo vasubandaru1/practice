@@ -12,6 +12,7 @@ print "Install Erlang"
 
  if [ $? -ne 0 ]; then
    yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm -y &>>$LOG
+   fi
 stat $?
 
 print "Setup YUM repositories "
