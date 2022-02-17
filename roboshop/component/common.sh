@@ -26,7 +26,7 @@ DOWNLOAD() {
   unzip -o -d $1 /tmp/${COMPONENT}.zip &>>$LOG
   stat $?
 
-  if [ $1 == '/home/roboshop' ]; then
+  if [ "$1" == "/home/roboshop" ]; then
     print "Remove old content"
     rm -rf /home/roboshop/${COMPONENT}
     stat $?
@@ -43,6 +43,7 @@ id roboshop &>>$LOG
 if [ $? -eq 0 ]; then
   echo "user already exists" &>>$LOG
 else
+  sleep 5
    useradd roboshop &>>$LOG
 fi
 stat $?
@@ -72,7 +73,8 @@ MAVEN() {
   stat $?
 
 ROBOSHOP_USER
-DOWNLOAD '/home/roboshop'
+
+DOWNLOAD "/home/roboshop"
 
 print "Make Mave package"
 cd /home/roboshop/${Component}
