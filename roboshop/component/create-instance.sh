@@ -21,7 +21,7 @@
 
 }
 
-if [ "$1"" == "ALL" ]; then
+if [ "$1" == "ALL" ]; then
 ALL=(catalogue mongodb shipping cart payment user mysql rabbitmq frontend redis)
 for component in ${ALL[*]}; do
 
