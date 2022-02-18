@@ -37,7 +37,7 @@ aws ec2 run-instances --launch-template LaunchTemplateId=lt-0c2f23ab38ce47240,Ve
 
 else
   echo -e "\e[1;33mInstance already exists\e[0m"
-
+return
   fi
 
 sleep 5
